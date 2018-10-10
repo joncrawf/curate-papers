@@ -32,6 +32,24 @@ optional arguments:
 
 ```
 
+## Config
+
+The format that the README should be in is dictated by the values listed in the
+`config.yml` file. The defauls for such is listed here:
+
+```
+
+regexes:
+  note:
+    - '- \[(?P<read>[ x])\] \[(?P<title>[^\[\]]+)\]\((?P<notes_path>[\w\-/.]+)\) \[\[(?P<publisher>[^\[\]]+)\]\((?P<url>[^\(\)]+)\)\] {0,1}\[{0,1}(?P<tags>[^\\\n[\]]*)\]{0,1}'
+    - '- \[(?P<read>[ x])\] (?P<title>[^\[\]]+) \[\[(?P<publisher>[^\[\]]+)\]\((?P<url>[^\(\)]+)\)\] {0,1}\[{0,1}(?P<tags>[^\\\n[\]]*)\]{0,1}'
+  section:
+    - '#### (?P<name>.+)'
+fuzzy_search:
+paper_name: 0.7
+
+```
+
 ## Suggestions
 
 If you have any suggestions over the features you would like to see in this

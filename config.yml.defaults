@@ -1,0 +1,8 @@
+regexes:
+  note:
+    - '- \[(?P<read>[ x])\] \[(?P<title>[^\[\]]+)\]\((?P<notes_path>[\w\-/.]+)\) \[\[(?P<publisher>[^\[\]]+)\]\((?P<url>[^\(\)]+)\)\] {0,1}\[{0,1}(?P<tags>[^\\\n[\]]*)\]{0,1}'
+    - '- \[(?P<read>[ x])\] (?P<title>[^\[\]]+) \[\[(?P<publisher>[^\[\]]+)\]\((?P<url>[^\(\)]+)\)\] {0,1}\[{0,1}(?P<tags>[^\\\n[\]]*)\]{0,1}'
+  section:
+    - '#### (?P<name>.+)'
+fuzzy_search:
+  paper_name: 0.7

@@ -9,7 +9,6 @@ from string_utils import red
 from file_parser import FileParser
 from section import Section
 
-
 try:
     with open("config.yml", 'r') as file:
         CONFIG = yaml.load(file)
@@ -19,6 +18,16 @@ try:
         FUZZY_PAPER_NAME_MATCH_PERCENT = CONFIG.get('fuzzy_search').get('paper_name', 0.7)
         OVERVIEW_FILE = CONFIG.get('overview', 'README.md')
 except:
+    import os
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    CONFIG_PATH = os.path.join(ROOT_DIR, '../config.yml.defaults')
+    with open(CONFIG_PATH, 'r') as file:
+        CONFIG = yaml.load(file)
+        REGEXES = CONFIG.get('regexes')
+        PAPER_REGEXES = REGEXES.get('note')
+        SECTION_REGEXES = REGEXES.get('section')
+        FUZZY_PAPER_NAME_MATCH_PERCENT = CONFIG.get('fuzzy_search').get('paper_name', 0.7)
+        OVERVIEW_FILE = CONFIG.get('overview', 'README.md')
     pass
 
 
