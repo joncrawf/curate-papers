@@ -1,4 +1,4 @@
 #!/bin/bash
 
 BINPATH=$(dirname "$0")
-python "$BINPATH/../fetch_papers/main.py" "$@"
+python "$BINPATH/../curate_papers/main.py" "$@"

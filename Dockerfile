@@ -1,4 +1,4 @@
-# Run fetch_papers in a container
+# Run curate_papers in a container
 #
 # docker run --rm
 #     -v $(pwd)/:/notes
