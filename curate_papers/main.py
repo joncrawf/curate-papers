@@ -17,6 +17,7 @@ try:
         SECTION_REGEXES = REGEXES.get('section')
         FUZZY_PAPER_NAME_MATCH_PERCENT = CONFIG.get('fuzzy_search').get('paper_name', 0.7)
         OVERVIEW_FILE = CONFIG.get('overview', 'README.md')
+        BIBFILE = CONFIG.get('bibfile', 'papers.bib')
 except:
     import os
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -28,6 +29,7 @@ except:
         SECTION_REGEXES = REGEXES.get('section')
         FUZZY_PAPER_NAME_MATCH_PERCENT = CONFIG.get('fuzzy_search').get('paper_name', 0.7)
         OVERVIEW_FILE = CONFIG.get('overview', 'README.md')
+        BIBFILE = CONFIG.get('bibfile', 'papers.bib')
     pass
 
 
@@ -85,11 +87,12 @@ def main():
             except KeyboardInterrupt:
                 print(red("Stopped download!"))
     elif options.bibtex:
-        for paper in papers:
-            print('- {}'.format(paper))
-            bibtex = PaperDownloader.get_paper_bibtex(paper)
-            if bibtex:
-                print('Bibtex: \n{}'.format(bibtex))
+        with open(BIBFILE, 'w') as file:
+            for paper in papers:
+                print('- {}'.format(paper))
+                bibtex = PaperDownloader.get_paper_bibtex(paper)
+                if bibtex:
+                    file.write(bibtex)
     else:
         if options.section or options.papers or options.changed or options.to_read or options.tags:
             papers_by_section = Section.gather_papers_by_section(papers)

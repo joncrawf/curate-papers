@@ -55,8 +55,9 @@ class PaperDownloader:
             try:
                 pub_search = scholarly.search_pubs_query(paper.title)
                 pub = next(pub_search)
-            except requests.exceptions.RequestException:
-                print(red('Failed to download bib'))
+            except Exception:
+                PaperDownloader.print_status(red("Unable to download bibtex"),
+                                             paper.short())
                 return
 
             PaperDownloader.download_file(pub.url_scholarbib, paper.bibtex_filename, paper)
