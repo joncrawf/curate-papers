@@ -30,7 +30,7 @@ class PaperDownloader:
                 file.write(response.content)
             PaperDownloader.print_status(green("Downloaded"), paper)
 
-        except requests.exceptions.RequestException:
+        except (requests.exceptions.RequestException, requests.HTTPError):
             PaperDownloader.print_status(red("Failed to download"),
                                          paper.short())
             os.remove(filename)
