@@ -19,6 +19,7 @@ RUN pip install --user -r /tmp/requirements.txt
 
 COPY start.sh /
 COPY curate_papers /code/curate_papers
+COPY config.yml.defaults /code/config.yml.defaults
 COPY bin/curate-papers /code/bin/curate-papers
 
 ENTRYPOINT ["/start.sh"]
